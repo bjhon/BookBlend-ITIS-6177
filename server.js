@@ -297,7 +297,7 @@ app.patch("/reviews/:id", async (req, res) => {
  *     summary: Get all reviews
  *     responses:
  *       200:
- *         description: List of reviews
+ *         description: List of all the reviews added by user or already in database
  *         content:
  *           application/json:
  *             schema:
