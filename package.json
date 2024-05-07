@@ -1,0 +1,29 @@
+{
+  "name": "bookblend-itis-6177",
+  "version": "1.0.0",
+  "description": "Book review sentiment analysis AI project.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bjhon/BookBlend-ITIS-6177.git"
+  },
+  "author": "Bianca Jhonson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bjhon/BookBlend-ITIS-6177/issues"
+  },
+  "homepage": "https://github.com/bjhon/BookBlend-ITIS-6177#readme",
+  "dependencies": {
+    "@azure/ai-language-text": "^1.1.0",
+    "@azure/ai-text-analytics": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "mariadb": "^3.3.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
+  }
+}
