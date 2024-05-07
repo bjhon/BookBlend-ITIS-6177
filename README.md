@@ -22,9 +22,10 @@ This endpoint will analyze sentiment and print the result. The way this is analy
 
 
 <details>
-<summary>/enter-review</summary>
+<summary>/new-review</summary>
 
-NEW
+POST request:
+This displays the review and will show the sentiment analysis result
 
 </details>
 
@@ -32,7 +33,8 @@ NEW
 <details>
 <summary>/reviews/:id</summary>
 
-DELETE request
+DELETE request:
+This deletes a specific book review by review ID
 
 </details>
 
@@ -40,15 +42,25 @@ DELETE request
 <details>
 <summary>/reviews</summary>
 
-DELETE request
+DELETE request:
 This endpoint redirects to delete all reviews
 
 </details>
 
 
 <details>
-<summary>My top THINGS-TO-RANK</summary>
+<summary>/reviews/:id</summary>
 
-YOUR TABLE
+PATCH request:
+Leads to update a review by the review ID
+
+</details>
+
+
+<details>
+<summary>/reviews</summary>
+
+GET request:
+List of all the reviews added by user or already in database
 
 </details>
