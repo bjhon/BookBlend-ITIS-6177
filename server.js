@@ -161,9 +161,9 @@ app.post("/analyze-sentiment", async (req, res) => {
 
 /**
  * @swagger
- * /enter-review:
+ * /new-review:
  *   post:
- *     summary: Enter a review
+ *     summary: Enter a new review
  *     requestBody:
  *       required: true
  *       content:
@@ -172,7 +172,7 @@ app.post("/analyze-sentiment", async (req, res) => {
  *             $ref: '#/components/schemas/Review'
  *     responses:
  *       200:
- *         description: Review and sentiment analysis result
+ *         description: this displays the review and will show the sentiment analysis result
  *         content:
  *           text/html:
  *             schema:
@@ -181,7 +181,7 @@ app.post("/analyze-sentiment", async (req, res) => {
  */
 
 // Endpoint to enter a review
-app.post("/enter-review", async (req, res) => {
+app.post("/new-review", async (req, res) => {
   const review = req.body.review;
   const sentimentAnalysisResult = await analyzeSentiment(review);
   res.send(`Review: ${review}<br><br>Sentiment Analysis Result: ${JSON.stringify(sentimentAnalysisResult, null, 2)}`);
