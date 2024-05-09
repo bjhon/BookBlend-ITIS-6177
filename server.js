@@ -24,16 +24,16 @@ const app = express();
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
-const apiKey = process.env.TEXT_ANALYTICS_API_KEY; // set environment variables from .env
-const endpoint = process.env.ENDPOINT; // set environment variables from .env
+const port = 3001;
 
 // Enable CORS for all routes
 app.use(cors());
-
 app.use(express.json());
 // load the .env file for key and endpoint url
 require("dotenv").config();
 
+const apiKey = process.env.TEXT_ANALYTICS_API_KEY; // set environment variables from .env
+const endpoint = process.env.ENDPOINT; // set environment variables from .env
 // Swagger JSDoc configuration
 const options = {
   definition: {
@@ -322,6 +322,6 @@ app.get("/reviews", async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+app.listen(3001, () => {
+  console.log("Server is running on port 3001");
 });
