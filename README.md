@@ -11,7 +11,7 @@ Hi, I am Bianca Jhonson. This is my ITIS 6177 final project. I needed to use Azu
 
 Use `npm install` to install all dependancy files that are needed for the application.
 
-To see **full interactive documentation** please <a href="http://161.35.48.83:3000/docs/">click here</a>
+To see **full interactive documentation** please <a href="http://161.35.48.83:3001/docs/">click here</a>
 
 <details>
 <summary>/analyze-sentiment</summary>
