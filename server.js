@@ -54,11 +54,23 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 const pool = mariadb.createPool({
   host: "localhost",
+  port: 3307,
   user: "root",
   password: "root",
   database: "db",
   connectionLimit: 5
 });
+
+// Function to handle database connection errors
+pool.getConnection((err, connection) => {
+  if (err) {
+    console.error("Error connecting to MariaDB:", err);
+  } else {
+    console.log("Connected to MariaDB database");
+    connection.release(); // Release the connection
+  }
+});
+
 
 async function analyzeSentiment(reviewText) {
   const client = new TextAnalyticsClient(endpoint, new AzureKeyCredential(apiKey));
@@ -183,9 +195,25 @@ app.post("/analyze-sentiment", async (req, res) => {
 // Endpoint to enter a review
 app.post("/new-review", async (req, res) => {
   const review = req.body.review;
-  const sentimentAnalysisResult = await analyzeSentiment(review);
-  res.send(`Review: ${review}<br><br>Sentiment Analysis Result: ${JSON.stringify(sentimentAnalysisResult, null, 2)}`);
+
+  try {
+    // Insert review into db.sql database
+    const conn = await pool.getConnection();
+    await conn.query("INSERT INTO reviews (review) VALUES (?)", [review]);
+    conn.release();
+
+    // Perform sentiment analysis on the review text
+    const sentimentAnalysisResult = await analyzeSentiment(review);
+
+    // Send back a response with the review and sentiment analysis result
+    res.send(`Review added to database: ${review}<br><br>Sentiment Analysis Result: ${JSON.stringify(sentimentAnalysisResult, null, 2)}`);
+  } catch (error) {
+    // If an error occurs during insertion, send back an error
+    console.error("Error adding review to database:", error);
+    res.status(500).send("Error adding review to database");
+  }
 });
+
 
 /**
  * @swagger
